@@ -1,6 +1,7 @@
 "use client";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
+import { setCookie } from "cookies-next";
 
 
 // diretiva use client
@@ -12,6 +13,11 @@ import { useEffect, useState } from "react";
 export default function Home() {
 
   const [user, setUser] = useState<{name: string}>({name: ""});
+
+  function makeLogin(){
+    setCookie("token", "meunovotokensalvonocookiehoje")
+
+  }
 
   useEffect(() => {
     async function loadData() {
@@ -31,6 +37,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1>{user.name}</h1>
+      <button onClick={makeLogin}>Fazer Login</button>
     </main>
   );
 }
