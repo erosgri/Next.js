@@ -2,6 +2,7 @@
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import { setCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 
 
 // diretiva use client
@@ -12,10 +13,13 @@ import { setCookie } from "cookies-next";
 
 export default function Home() {
 
+  const router = useRouter();
+
   const [user, setUser] = useState<{name: string}>({name: ""});
 
   function makeLogin(){
     setCookie("token", "meunovotokensalvonocookiehoje")
+    router.push('/dashboard/users')
 
   }
 
